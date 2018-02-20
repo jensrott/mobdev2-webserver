@@ -1,6 +1,7 @@
 // Import the protocols
 const http = require('http');
 const express = require('express');
+const path = require('path');
 const app = express();
 const server = http.createServer(app);
 // const url = require('url');
@@ -15,13 +16,23 @@ if(nodeEnv !== 'production') {
 const hostName = '127.0.0.1';
 const port = '8080';
 
+// Important
+app.use(express.static(path.join(__dirname, 'client/build'))); // To link to the client map, now we can see our cat ! :)
+
 app.get('/', (req, res) => {
   res.send('Hello Express Yes! :)');
 });
 
+/* Middlewares error handling */
 app.use((req, res, next) => {
-  res.status(404)
-     .send('404 - Hello is it me you are looking for?'); // Later we display a page
+  const err = new Error('Not found!');
+  err.status = 400;
+  next(err);
+});
+
+app.use((err, req, res) => {
+  res.status(err.status || 500);
+  res.send('error');
 });
 
 /* Description of the server
