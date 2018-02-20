@@ -12,6 +12,6 @@
     "nodemon": "^1.15.1"
   },
   "scripts": {
-    "start-dev": "nodemon server_1.js"
+    "start-dev": "nodemon --config nodemon.json server_1.js"
   }
 }
