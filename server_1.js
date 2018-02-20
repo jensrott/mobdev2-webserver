@@ -8,10 +8,13 @@ const port = '8080';
 // Description of the server
 const server = http.createServer((req, resp) => {
   resp.statusCode = 200;
-  resp.setHeader('Content-Type', 'text/plain');
-  resp.end('<h1>Hello New Media Developers!</h1>');
+  resp.setHeader('Content-Type', 'application/json'); 
+  resp.end(JSON.stringify({
+    "message": "Hello JSON!",
+  }));
 });
 
+// Running the server
 server.listen(port, hostName, () => {
   console.log(`Node server running at http://
   ${hostName}:${port}/ !`);
