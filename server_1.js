@@ -12,7 +12,8 @@ const server = http.createServer((req, resp) => {
   const urlParts = url.parse(req.url, true); // Url
   const paramName = (!urlParts.query.name) ? 'New Media Development' : 
   urlParts.query.name;
-    
+
+  
   resp.statusCode = 200;
   resp.setHeader('Content-Type', 'text/html');
   resp.end(`<h1>Hello ${paramName}</h1>
