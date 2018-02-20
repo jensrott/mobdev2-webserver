@@ -12,6 +12,7 @@
     "nodemon": "^1.15.1"
   },
   "scripts": {
-    "start-dev": "nodemon --config nodemon.json server_1.js"
+    "start": "echo 'Server started in production Mode.' & SET NODE_ENV=production & node server_1.js",
+    "start-dev": "echo 'Server started in development Mode.' & SET NODE_ENV=development & nodemon --config nodemon.json server_1.js"
   }
 }

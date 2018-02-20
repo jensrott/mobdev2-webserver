@@ -3,6 +3,12 @@ const http = require('http');
 const url = require('url');
 
 // Settings
+const nodeEnv = (process.env.NODE_ENV) ? process.env.NODE_ENV :
+'development';
+if(nodeEnv !== 'production') {
+  console.log('Do some development stuff!');
+}
+
 const hostName = '127.0.0.1';
 const port = '8080';
 
