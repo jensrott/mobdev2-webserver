@@ -2,6 +2,7 @@
 const http = require('http');
 const express = require('express');
 const path = require('path');
+const logger = require('morgan');
 const app = express();
 const server = http.createServer(app);
 // const url = require('url');
@@ -19,6 +20,7 @@ const port = '8080';
 
 // Important
 app.use(express.static(path.join(__dirname, 'client/build'))); // To link to the client map, now we can see our cat ! :)
+app.use(logger('dev'));
 
 app.get('/', (req, res) => {
   res.send('Hello Express Yes! :)');
