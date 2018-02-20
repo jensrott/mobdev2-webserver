@@ -1,0 +1,11 @@
+{
+  "name": "mobdev2-webserver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jensrott/mobdev2-webserver.git",
+  "author": "jensrott <jensrott@student.arteveldehs.be>",
+  "license": "MIT",
+  "dependencies": {
+    "url": "^0.11.0"
+  }
+}
