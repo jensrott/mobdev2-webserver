@@ -16,6 +16,7 @@ if(nodeEnv !== 'production') {
 const hostName = '127.0.0.1';
 const port = '8080';
 
+
 // Important
 app.use(express.static(path.join(__dirname, 'client/build'))); // To link to the client map, now we can see our cat ! :)
 
