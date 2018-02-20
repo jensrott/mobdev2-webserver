@@ -10,14 +10,15 @@ const port = '8080';
 const server = http.createServer((req, resp) => {
   const userAgent = req.headers['user-agent']; // User agent
   const urlParts = url.parse(req.url, true); // Url
-  const paramName = (!urlParts.query.name) ? 'New Media Development' : 
+  const paramName = (!urlParts.query.name) ? 'New Media Development' : // Check if there is a name
   urlParts.query.name;
 
-  
+
   resp.statusCode = 200;
   resp.setHeader('Content-Type', 'text/html');
   resp.end(`<h1>Hello ${paramName}</h1>
-  <p>Your user agent is ${userAgent}</p>`);
+  <p>Your user agent is ${userAgent}</p>
+  <p>I'm a watcher!</p>`);
 });
 
 
