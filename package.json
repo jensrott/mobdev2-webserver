@@ -6,6 +6,7 @@
   "author": "jensrott <jensrott@student.arteveldehs.be>",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.2",
     "url": "^0.11.0"
   },
   "devDependencies": {
