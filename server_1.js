@@ -3,11 +3,13 @@ const http = require('http');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 // const url = require('url');
 
-// Settings
+/* Settings */
 const nodeEnv = (process.env.NODE_ENV) ? process.env.NODE_ENV :
 'development';
 if(nodeEnv !== 'production') {
@@ -15,20 +17,23 @@ if(nodeEnv !== 'production') {
 }
 
 const hostName = '127.0.0.1';
+// const hostName = '10.5.140.46';
 const port = '8080';
 
-
-// Important
+/* Adding Middleware !!Important!! */
 app.use(express.static(path.join(__dirname, 'client/build'))); // To link to the client map, now we can see our cat ! :)
 app.use(logger('dev'));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true})); // We can now work with big objects
 
 app.get('/', (req, res) => {
   res.send('Hello Express Yes! :)');
 });
 
-/* Middlewares error handling */
+/* Middlewares errors handling */
 app.use((req, res, next) => {
-  const err = new Error('Not found!');
+  const err = new Error('Page Not found!');
   err.status = 400;
   next(err);
 });
@@ -54,7 +59,7 @@ const server = http.createServer((req, resp) => {
 });
 */
 
-// Running the server
+/* Running the server */
 server.listen(port, hostName, () => {
   console.log(`Node server running at http://
   ${hostName}:${port}/ !`);
